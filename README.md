@@ -7,6 +7,9 @@ This project contains all the source code for the District 24 website. The site 
 First, see [PREREQUISITES.md](PREREQUISITES.md) to get your local development environment set up.  
 Second, see [DEVELOPMENT.md](DEVELOPMENT.md) for build, run, and deploy instructions.
 
+## Technology
+The site is built with [Astro](https://astro.build/) and TypeScript. Every page is rendered to its own static HTML file at build time. React is used only for the few interactive parts (the navigation menus, the meeting search, and the tables that read live from Google Sheets).
+
 ## Roadmap
 Relatively static site; just need to periodically update the leads at the three Group-specific pages.
 

@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import { ExtLink } from '../components/ExtLink';
+import { LeadsTable } from '../components/LeadsTable';
+import { LEADS_SATURDAY_STEP_CSV_URL } from '../data';
+---
+<BaseLayout
+  title="Saturday Step Meeting"
+  description="Saturday Step Meeting: an AA step meeting Saturdays at 8:30 AM at Lumen Christi Catholic Church in Mequon, WI, and on Zoom."
+>
+  <div class="page">
+    <h1 class="page-h1">Saturday Step Meeting</h1>
+    <div class="three-col">
+      <Card title="📅 When"><p class="page-p semibold">Saturdays at 8:30 AM</p></Card>
+      <Card title="📍 Location">
+        <address class="address-block">Lumen Christi Catholic Church<br />2750 W Mequon Rd<br />Mequon, WI 53092</address>
+      </Card>
+      <Card title="📹 Zoom">
+        <ExtLink href="https://us06web.zoom.us/j/86423007839?pwd=TzaGeBalHhPlfb96RfkDQ0dpW70ERG.1">Join Zoom Meeting</ExtLink>
+        <p class="page-p text-sm mt-sm">ID: 864 2300 7839 · Passcode: District24</p>
+      </Card>
+    </div>
+    <Card title="Notes">
+      <p class="page-p">Step Meeting · Handicap Access · Group ID: 000316274</p>
+    </Card>
+    <Card title="Upcoming Leads">
+      <LeadsTable client:load csvUrl={LEADS_SATURDAY_STEP_CSV_URL} showTopic />
+    </Card>
+  </div>
+</BaseLayout>

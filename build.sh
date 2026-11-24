@@ -1,6 +1,6 @@
 #!/bin/bash
 # Usage:
-#   ./build.sh               — build only
+#   ./build.sh build         — build only
 #   ./build.sh local         — build + deploy to local nginx at /usr/local/nginx/html/
 #   ./build.sh docker        — build Docker image + run at http://localhost:8080
 #   ./build.sh aws           — build + deploy to AWS Amplify
@@ -33,36 +33,25 @@ usage() {
 # ── Build ────────────────────────────────────────────────────────────
 function app_build() {
     rm -rf build
-    mkdir -p build
     rm -rf dist
     mkdir -p dist
 
-    # Bundles every component under src/ (pages, shared components, data,
-    # utils) into a single compiled file. React/ReactDOM stay on the CDN
-    # (see index.html), so JSX compiles to React.createElement calls
-    # rather than bundling React itself.
-    npx esbuild src/main.jsx --bundle --outfile=js/index.compiled.js \
-        --jsx-factory=React.createElement --jsx-fragment=React.Fragment --minify
-    chmod 644 js/index.compiled.js
-
-    cp -a index.html build/
-    cp -a css build/
-    mkdir -p build/js
-    cp -a js/index.compiled.js build/js/
-    chmod 644 build/js/index.compiled.js
+    # Type-checks the project (astro check) and then renders every page in
+    # src/pages/ to static HTML in build/. React is bundled only for the
+    # interactive islands (navbar menus, meeting search, Google Sheet tables).
+    npm run build
 }
 # ── Package ───────────────────────────────────────────────────────────────────
 function app_package() {
     [[ ! -d "dist" ]] && { echo "Creating dist/"; mkdir dist; }
     [[ -f "dist/district24.zip" ]] && { echo "Removing old zip"; rm dist/*.zip; }
-    zip -r dist/district24.zip css js index.html -x "*.DS_Store"
+    (cd build && zip -r ../dist/district24.zip . -x "*.DS_Store")
 }
 
 # ── Deploy targets ────────────────────────────────────────────────────────────
 function cmd_local() {
-    cp -a build/. /usr/local/nginx/html/
-    chmod 644 /usr/local/nginx/html/js/index.compiled.js
-    echo "Deployed to local nginx"
+    cp -a build/. "$NGINX_HTML"/
+    echo "Deployed to local nginx at $NGINX_HTML"
 }
 
 function cmd_docker() {

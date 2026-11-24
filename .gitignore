@@ -1,7 +1,7 @@
-.gitignore
 build
 dist
 node_modules/
-js/index.compiled.js
+.astro/
 .idea
 .vscode
+.DS_Store

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import { ExtLink } from '../components/ExtLink';
+import { WORKSHOPS } from '../data';
+---
+<BaseLayout
+  title="Workshops"
+  description="History of AA District 24 workshops in Ozaukee County, with links to past workshop materials."
+>
+  <div class="page">
+    <h1 class="page-h1">District 24 Workshops</h1>
+    <Card>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th class="th-narrow">Year</th><th>Workshop(s)</th></tr></thead>
+          <tbody>
+            {WORKSHOPS.map((w, i) => (
+              <tr class={i % 2 === 0 ? 'stripe' : 'white'}>
+                <td><strong class="text-navy">{w.year}</strong></td>
+                <td>{w.link ? <ExtLink href={w.link}>{w.text}</ExtLink> : w.text}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Card>
+    <Card>
+      <p class="page-p italic">Do you have a suggestion for a future workshop topic?</p>
+      <p class="page-p">Send an email to <a href="mailto:info@aadistrict24.org" class="inline-link">info@aadistrict24.org</a>.</p>
+    </Card>
+  </div>
+</BaseLayout>

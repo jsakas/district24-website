@@ -3,7 +3,7 @@
 | No. | Title | Who | Status | Link |
 |-----|-------|-----|--------|------|
 | 1 | Add links to our Google Drive | Mike | Open | [details](#task-1) |
-| 2 | Switch the build process from esbuild over to Astro (https://astro.build/) | Jon | Open | [details](#task-2) |
+| 2 | Switch the build process from esbuild over to Astro (https://astro.build/) | Jon | In review | [details](#task-2) |
 | 3 | Consider using Google Sheets as a simple CMS as an alternative to data.js | Mike | Open | [details](#task-3) |
 | 4 | Automatically build and deploy the website when main is merged | Jone | Open | [details](#task-4) |
 

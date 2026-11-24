@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import ResLink from '../components/ResLink.astro';
+
+const CALENDAR_URL = 'https://calendar.google.com/calendar/embed?src=hs1unk51oc51iqdds41s5vva58%40group.calendar.google.com&ctz=America%2FChicago';
+---
+<BaseLayout
+  title="Calendar"
+  description="Upcoming meetings, workshops and events for AA District 24 in Ozaukee County, Wisconsin."
+>
+  <div class="page">
+    <h1 class="page-h1">District 24 Calendar</h1>
+    <Card>
+      <p class="page-p">The District 24 calendar is hosted on Google Calendar.</p>
+      <ResLink href={CALENDAR_URL}>Open District 24 Calendar in a new tab</ResLink>
+    </Card>
+    <div class="calendar-wrap">
+      <iframe class="calendar-frame" src={CALENDAR_URL} title="District 24 Google Calendar" loading="lazy"></iframe>
+    </div>
+  </div>
+</BaseLayout>

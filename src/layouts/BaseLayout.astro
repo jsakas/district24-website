@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+import { Navbar } from '../components/Navbar';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  /** Page-specific title; omitted on the home page. */
+  title?: string;
+  /** Meta description for search engines and link previews. */
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const siteName = 'AA District 24 – Ozaukee County';
+const fullTitle = title ? `${title} | ${siteName}` : siteName;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <!--
+      Before the move to Astro the site used hash routes (e.g. /#/calendar).
+      Send old bookmarks and links on to the matching real page.
+    -->
+    <script is:inline>
+      (function () {
+        var m = /^#\/([a-z0-9-]*)$/.exec(window.location.hash);
+        if (m) window.location.replace(m[1] ? '/' + m[1] + '/' : '/');
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <Navbar client:load currentPath={Astro.url.pathname} />
+      <main><slot /></main>
+      <Footer />
+    </div>
+  </body>
+</html>

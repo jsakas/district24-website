@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import BulletList from '../components/BulletList.astro';
+import ResLink from '../components/ResLink.astro';
+---
+<BaseLayout
+  title="Corrections"
+  description="The District 24 Corrections Committee carries the A.A. message of recovery to alcoholics who are in custody."
+>
+  <div class="page">
+    <h1 class="page-h1">District 24 Corrections</h1>
+    <Card>
+      <p class="page-p">
+        Members of Corrections Committees coordinate the work of individual A.A. members and groups to carry the
+        message of recovery to alcoholics who are in custody.
+      </p>
+    </Card>
+    <Card title="Committee Focuses On">
+      <BulletList items={[
+        'Bringing meetings and literature into facilities',
+        'Raising awareness of the Corrections Correspondence Service (C.C.S.) among "inside" and "outside" A.A. members',
+        'Helping individuals in custody transition to a local A.A. community through Prerelease Contacts',
+      ]} />
+    </Card>
+    <Card title="Resources">
+      <ResLink href="https://www.aa.org/corrections-committees">Committee Resources – AA.org</ResLink>
+      <ResLink href="https://drive.google.com/file/d/12ihcKV27v3a1TXExhpn_22TlqvSjQBjp/view">Corrections Workbook (Google Drive)</ResLink>
+    </Card>
+    <Card title="Contact">
+      <p class="page-p">
+        Questions? Contact <a href="mailto:abbejanemarten@gmail.com" class="inline-link">Abbe M</a> or{' '}
+        <a href="mailto:gboehle60@gmail.com" class="inline-link">Gary B</a>.
+      </p>
+    </Card>
+  </div>
+</BaseLayout>

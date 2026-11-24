@@ -1,6 +1,7 @@
 node_modules
 build
 dist
+.astro
 .git
 .idea
 .DS_Store

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import { ExtLink } from '../components/ExtLink';
+import { SpeakersTable } from '../components/SpeakersTable';
+---
+<BaseLayout
+  title="Women's Big Book Meeting"
+  description="Women's Big Book Study: an AA women's meeting Mondays at 6:00 PM at Christ Church in Mequon, WI, and on Zoom."
+>
+  <div class="page">
+    <h1 class="page-h1">Women's Big Book Meeting</h1>
+    <div class="three-col">
+      <Card title="📅 When"><p class="page-p semibold">Mondays at 6:00 PM</p></Card>
+      <Card title="📍 Location">
+        <address class="address-block">Christ Church<br />13460 N Port Washington Rd<br />Mequon, WI 53097</address>
+      </Card>
+      <Card title="📹 Zoom">
+        <ExtLink href="https://us06web.zoom.us/j/81035607580?pwd=vwUr5wbDbbDQgXbLYFb9dSwOlShbUp.1">Join Zoom Meeting</ExtLink>
+        <p class="page-p text-sm mt-sm">ID: 810 3560 7580 · Passcode: District24</p>
+      </Card>
+    </div>
+    <Card title="About This Meeting">
+      <p class="page-p">
+        Join us for a supportive Women's Big Book Study, where we read and discuss the Big Book of Alcoholics Anonymous,
+        from the Preface through Dr. Bob's Nightmare. Each week, we read a few pages as our lead and share insights — no
+        break-out groups, just open discussion. Quarterly speaker meetings.
+      </p>
+      <p class="page-p">
+        Connect with women in recovery and deepen your understanding of the program. <strong>All are welcome!</strong>
+      </p>
+      <p class="page-p text-sm text-muted">Women's Meeting · Handicap Access · Group ID: 000035432</p>
+    </Card>
+    {/*
+    <Card title="Upcoming Quarterly Speakers">
+        <p class="page-p">
+            <b>12th Annual Open Speaker Meeting!!</b>&nbsp;(<a target='_blank' href='https://drive.google.com/file/d/1bJOqPvY9z_Yku78HHfahV6Gwzl0E6xUj/view'>Flyer</a>)<br/>
+            <b>Speakers</b>: Paul G - Al-Anon and Abby S - AA<br/>
+            <b>Time</b>: 6:00 PM Gathering, 6:30 Speakers<br/>
+            <b>Location</b>: Christ Church, Mequon <br/>
+            13460 N. Port Washington Rd
+            &nbsp;<i>(north of Highland Rd)</i><br/>
+            <b>Open meeting – all are welcome</b>
+        </p>
+    </Card>
+    */}
+    <Card title="Upcoming Speakers">
+      <SpeakersTable client:load />
+    </Card>
+  </div>
+</BaseLayout>

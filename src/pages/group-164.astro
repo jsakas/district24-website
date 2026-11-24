@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import { ExtLink } from '../components/ExtLink';
+import { LeadsTable } from '../components/LeadsTable';
+import { LEADS_164_CSV_URL } from '../data';
+---
+<BaseLayout
+  title="164 and More"
+  description="164 and More: a hybrid AA topic meeting Thursdays at 6:30 PM at the Peltz Center in Mequon, WI, and on Zoom."
+>
+  <div class="page">
+    <h1 class="page-h1">164 and More</h1>
+    <div class="three-col">
+      <Card title="📅 When"><p class="page-p semibold">Thursdays at 6:30 PM</p></Card>
+      <Card title="📍 Location">
+        <address class="address-block">Peltz Center for Jewish Life<br />2233 W Mequon Rd<br />Mequon, WI 53092</address>
+      </Card>
+      <Card title="📹 Zoom">
+        <ExtLink href="https://us06web.zoom.us/j/81933497892?pwd=3ZZT47GwJ19LENZUSnbeKW365Q9QYn.1">Join Zoom Meeting</ExtLink>
+        <p class="page-p text-sm mt-sm">ID: 819 3349 7892 · Passcode: District24</p>
+      </Card>
+    </div>
+    <Card title="Notes">
+      <p class="page-p">Topic Meeting · Handicap Access · Group ID: 000090603</p>
+      <p class="page-p">
+        Allison D. is the Group's Treasurer and accepts contributions via Venmo. Email{' '}
+        <a href="mailto:adozark@gmail.com" class="inline-link">adozark@gmail.com</a> for her Venmo info — note
+        "Thursday 164" in the memo field.
+      </p>
+    </Card>
+    <Card title="Upcoming Leads">
+      <LeadsTable client:load csvUrl={LEADS_164_CSV_URL} />
+      <p class="table-note">* OOA = Out of area speaker</p>
+    </Card>
+  </div>
+</BaseLayout>

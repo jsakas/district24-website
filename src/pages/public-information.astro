@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import BulletList from '../components/BulletList.astro';
+---
+<BaseLayout
+  title="Public Information"
+  description="The District 24 Public Information Committee carries the A.A. message to the general public, schools and the media."
+>
+  <div class="page">
+    <h1 class="page-h1">Public Information</h1>
+    <Card title="Purpose">
+      <p class="page-p">
+        Like all of A.A., the primary purpose of members involved with Public Information service is to carry the A.A.
+        message to the alcoholic who still suffers. Working together, members of local Public Information committees
+        convey A.A. information to the general public, including the media.
+      </p>
+    </Card>
+    <Card title="Committee Focus">
+      <BulletList items={[
+        'Giving presentations about A.A. to schools and organizations',
+        'Providing information about A.A. through digital and print materials',
+        'Ensuring local media have accurate information about A.A. through PSAs, anonymity-protected interviews, and press kits',
+      ]} />
+    </Card>
+    <Card title="Contact">
+      <p class="page-p">Questions? Contact <a href="mailto:j94830412@gmail.com" class="inline-link">Jess G</a>.</p>
+    </Card>
+  </div>
+</BaseLayout>

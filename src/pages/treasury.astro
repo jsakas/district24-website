@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import ResLink from '../components/ResLink.astro';
+---
+<BaseLayout
+  title="Treasury"
+  description="How to contribute to AA District 24, the District mailing address, and monthly treasury reports."
+>
+  <div class="page">
+    <h1 class="page-h1">District 24 Treasury</h1>
+    <Card>
+      <p class="page-p">
+        <strong>Allison D.</strong> is the current Treasurer for District 24. Allison accepts Venmo payments on behalf
+        of the District — please email for her Venmo account information.
+      </p>
+      <p class="page-p">
+        Email: <a href="mailto:adozark@gmail.com" class="inline-link">adozark@gmail.com</a>
+      </p>
+    </Card>
+    <Card title="Mailing Address">
+      <address class="address-block">
+        District 24<br />
+        PO Box 72021<br />
+        Cedarburg, WI 53012
+      </address>
+    </Card>
+    <Card title="Resources">
+      <ResLink href="https://tinyurl.com/district24docs">Monthly Treasury Reports (meeting folders on Google Drive)</ResLink>
+    </Card>
+  </div>
+</BaseLayout>

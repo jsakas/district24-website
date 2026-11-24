@@ -9,7 +9,7 @@
 
 ## Prerequisites
 * git (v 2.x)
-* Node.js (v 20.x | also provides npm)
+* Node.js (v 22.x, at least 22.23 | also provides npm)
 * IDE (stands for **I**ntegrated **D**evelopment **E**nvironment)
     * WebStorm (JetBrains)
     * VS Code (Microsoft)
@@ -50,27 +50,27 @@ Day-to-day: `git pull` to get latest changes, `git checkout -b my-change` to sta
 
 
 ## Node.js (also provides npm)
-JavaScript runtime used here only for build tooling — the site itself ships as plain HTML/CSS/JS with React loaded from a CDN (see `index.html`). npm (bundled with Node) installs and runs those build tools. Install v20.x (this matches the `node:20-alpine` image used in `Dockerfile`, so local builds behave the same as the Docker build).
+JavaScript runtime used here only for build tooling — Astro renders the site to static HTML at build time, so the server never runs Node. npm (bundled with Node) installs and runs those build tools. Install v22.x, at least 22.23, which Astro requires (this matches the `node:22-alpine` image used in `Dockerfile`, so local builds behave the same as the Docker build).
 
 **macOS**
-- Download the v20.x LTS installer (.pkg) from [nodejs.org](https://nodejs.org/) and run it.
-- Or via [nvm](https://github.com/nvm-sh/nvm) if you need to switch Node versions across projects: install nvm, then `nvm install 20`.
+- Download the v22.x LTS installer (.pkg) from [nodejs.org](https://nodejs.org/) and run it.
+- Or via [nvm](https://github.com/nvm-sh/nvm) if you need to switch Node versions across projects: install nvm, then `nvm install 22`.
 
 **Windows (via WSL)**
 - Inside your WSL Ubuntu terminal, install via [nvm](https://github.com/nvm-sh/nvm) (recommended — Ubuntu's packaged Node is usually outdated):
   ```bash
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
   # restart the terminal, then:
-  nvm install 20
+  nvm install 22
   ```
 
-**Verify** (either OS): `node -v` should print `v20.x`, `npm -v` should print a version too.
+**Verify** (either OS): `node -v` should print `v22.x` (22.23 or later), `npm -v` should print a version too.
 
 Once installed, from the project root:
 ```bash
 npm install
 ```
-This reads `package.json` / `package-lock.json` and installs `esbuild`, the only build dependency, into `node_modules/`. You only need to re-run it when dependencies change.
+This reads `package.json` / `package-lock.json` and installs Astro, React, TypeScript and the other build dependencies into `node_modules/`. You only need to re-run it when dependencies change.
 
 
 ## IDE (Integrated Development Environment)
@@ -78,7 +78,7 @@ While any editor works, you will want to use an IDE because of all the features 
 
 **WebStorm**
 - macOS: download from [jetbrains.com/webstorm](https://www.jetbrains.com/webstorm/) (or install the JetBrains Toolbox app to manage installs/updates), open the `.dmg`, drag to Applications.
-- Windows: install the JetBrains WebStorm `.exe` from [jetbrains.com/webstorm](https://www.jetbrains.com/webstorm/) natively on Windows, but open the project through WSL — use File > Remote Development, or set Settings > Languages & Frameworks > Node.js interpreter to the WSL one, so it picks up the Node 20 you installed inside Ubuntu.
+- Windows: install the JetBrains WebStorm `.exe` from [jetbrains.com/webstorm](https://www.jetbrains.com/webstorm/) natively on Windows, but open the project through WSL — use File > Remote Development, or set Settings > Languages & Frameworks > Node.js interpreter to the WSL one, so it picks up the Node 22 you installed inside Ubuntu.
 
 **Opening WSL Projects in WebStorm**
 You can access and work on code directly out of your WSL distribution:

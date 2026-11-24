@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { MeetingFinder } from '../components/MeetingFinder';
+---
+<BaseLayout
+  title="All Groups in District 24"
+  description="Find an AA meeting in Ozaukee County, Wisconsin — search District 24 groups by day, name, location or online availability."
+>
+  <div class="page">
+    <h1 class="page-h1">All Groups in District 24</h1>
+    <MeetingFinder client:load />
+    <br />
+    <span class="text-navy bold italic">Open District 24 <a target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1qmuSAf2tNNXkwAtQ-qxsV0cCPpA1RYBw/view">'When and Where'</a></span>
+  </div>
+</BaseLayout>

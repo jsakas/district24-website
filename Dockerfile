@@ -1,22 +1,15 @@
 # ── Stage 1: Build ────────────────────────────────────────────────────────────
-FROM node:20-alpine AS builder
+# Astro requires Node 22.23+.
+FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Install dependencies first (cached layer)
 COPY package*.json ./
 RUN npm ci
 
-# Copy source
+# Copy source and build — same as `npm run build` locally (type-check + Astro build into build/)
 COPY . .
-
-# Build main site — mirrors what build.sh does locally
-RUN npx esbuild src/main.jsx --bundle --outfile=js/index.compiled.js \
-      --jsx-factory=React.createElement --jsx-fragment=React.Fragment --minify && \
-    mkdir -p build && \
-    cp -a index.html build/ && \
-    cp -a css build/ && \
-    mkdir -p build/js && \
-    cp -a js/index.compiled.js build/js/
+RUN npm run build
 
 # ── Stage 2: Serve ────────────────────────────────────────────────────────────
 FROM nginx:latest
